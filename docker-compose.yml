@@ -22,5 +22,5 @@ services:
       logLevel=0xFF
     ports:
       - "8123:8123"
-    restart: unless-stopped
+    restart: restart
 
