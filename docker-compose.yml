@@ -1,0 +1,26 @@
+version: '3.1'
+services:
+  shadowsocks:
+    image: hub.hamdocker.ir/shadowsocks/shadowsocks-libev:latest
+#    ports:
+#      - "1080:1080"
+    volumes:
+      - ./ss/config.json:/opt/config.json
+      - ./lib/v2ray-plugin_linux_amd64:/opt/v2ray-plugin_linux_amd64
+    command: ss-local -c /opt/config.json
+    restart: always
+
+  polipo:
+    image: hub.hamdocker.ir/sejil/polipo:latest
+    links:
+      - shadowsocks
+    command:
+#      authCredentials=username:password
+      socksParentProxy=shadowsocks:1080
+      logSyslog=true
+      logFile=/dev/stdout
+      logLevel=0xFF
+    ports:
+      - "8123:8123"
+    restart: unless-stopped
+

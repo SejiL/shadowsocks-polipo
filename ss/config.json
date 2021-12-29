@@ -1,0 +1,15 @@
+{
+    "server":"<SS_SERVER_URL>",
+    "server_port":443,
+    "local_address":"0.0.0.0",
+    "local_port":1080,
+    "password":"<SS_SERVER_PASSWORD>",
+    "timeout":300,
+    "method":"chacha20-ietf-poly1305",
+    "no_delay":true,
+    "workers":8,
+    "plugin": "/opt/v2ray-plugin_linux_amd64",
+    "plugin_opts": "tls;host=<SS_SERVER_URL>;loglevel=debug;path=/",
+    "fast_open":true,
+    "reuse_port":true
+}
